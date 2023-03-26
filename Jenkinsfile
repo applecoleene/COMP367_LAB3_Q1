@@ -25,7 +25,7 @@ pipeline {
         stage("Docker build") {
         	steps {
 				script {
-					sh "docker build -t acduqu/dockermavenlab3:${env.BUILD_ID} ."
+					bat "docker build -t acduqu/dockermavenlab3:${env.BUILD_ID} ."
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
         stage("Docker Login") {
             steps {
                 withCredentials([usernamePassword(credentialsId: '92615733-e231-4a47-ac25-8feb884d4227', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-                    sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                    bat "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
         stage("Docker push") {
                steps {
                    script {
-                            sh "docker push acduqu/dockermavenlab3:${env.BUILD_ID}"
+                            bat "docker push acduqu/dockermavenlab3:${env.BUILD_ID}"
                 }
             }
         }
