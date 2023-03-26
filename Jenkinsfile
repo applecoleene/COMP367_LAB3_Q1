@@ -8,7 +8,7 @@ pipeline {
     }
 
     stages {
-        stage('Check out') {
+        stage("Check out") {
             steps {
             echo "current build_id is ${env.BUILD_ID}"
                 // Get some code from a GitHub repository
@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-        stage('Docker Login') {
+        stage("Docker Login") {
             steps {
                 withCredentials([usernamePassword(credentialsId: '92615733-e231-4a47-ac25-8feb884d4227', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
                     sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
