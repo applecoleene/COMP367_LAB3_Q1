@@ -12,7 +12,7 @@ pipeline {
             steps {
             echo "current build_id is ${env.BUILD_ID}"
                 // Get some code from a GitHub repository
-                git branch: 'main', url: 'https://github.com/applecoleene/COMP367_LAB2_Q3.git'
+                git branch: 'main', url: 'https://github.com/applecoleene/COMP367_LAB3_Q1.git'
             }
         }
 
