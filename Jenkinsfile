@@ -25,7 +25,12 @@ pipeline {
         stage("Docker build") {
         	steps {
 				script {
-					bat "docker build -t acduqu/dockermavenlab3:${env.BUILD_ID} ."
+					def imageTag = "acduqu/dockermavenlab3:${env.BUILD_ID}"
+                    def dockerfile = 'Dockerfile'
+                    def artifact = 'target/dockermavenlab3.jar'
+                    def appPath = '/usr/src/app'
+
+                    docker.build(imageTag, "-f ${dockerfile} --build-arg artifact=${artifact} --build-arg appPath=${appPath} .")
                 }
             }
         }
