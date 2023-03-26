@@ -33,7 +33,7 @@ pipeline {
 				script {
 					def imageTag = "acduqu/dockermavenlab3:${env.BUILD_ID}"
                     def dockerfile = 'Dockerfile'
-                    def artifact = 'target/dockermavenlab3.jar'
+                    def artifact = 'target/AppleDuquinal_COMP367_Q3-0.0.1-SNAPSHOT.jar'
                     def appPath = '/usr/src/app'
 
                     docker.build(imageTag, "-f ${dockerfile} --build-arg artifact=${artifact} --build-arg appPath=${appPath} .")
@@ -52,7 +52,7 @@ pipeline {
         stage("Docker push") {
                steps {
                    script {
-                            bat "docker push acduqu/dockermavenlab3:${env.BUILD_ID}"
+                            bat "docker push acduqu/AppleDuquinal_COMP367_Q3-0.0.1-SNAPSHOT:${env.BUILD_ID}"
                 }
             }
         }
